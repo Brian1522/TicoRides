@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../CSS/styles.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+  <!--Bootstrap-->
+  <title>Dashboard</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
+      <div class="container-fluid">
+        <a href="../index.html">
+          <img src="../imagenes/auto.png" alt="" class="logo" width="300px" />
+        </a><!-- imagen lleva a pagina principal-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse position-absolute top-50 end-0 translate-middle-y">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../newRide/newRide.html">Rides</a>
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../Settings/settings.html">Settings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav><!-- Fin del nav-->
+  </header>
+
+  <div class="container mt-3">
+    <div class="row">
+      <div class="card mb-3 ms-auto p-2 bd-highlight" style="max-width: 200px">
+        <div class="row g-0 d-flex">
+          <div class="col-md-4">
+            <img src="../imagenes/user-images.png" /> <!--imagen de logo con el respectivo user-->
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Welcome</h5>
+              <p class="card-text" id="userLogged"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Dashboard</h2>
+    <br />
+    <article>
+      <h3 class="text-center m-4">Your current list of Rides:</h3> <!--lista actual de viajes-->
+      <section>
+        <table id="rideTable" class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <div class="mb-5">
+          <a href="../newRide/newRide.html" class="btn btn-success">
+            <!-- <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6L
+              y93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld
+              0JveD0iMCAwIDQ0OCA0NDgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPjxwYXRoIHhtb
+              G5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0ibTQwOCAxODRoLTEzNmMtNC40MTc5NjkgMC04LTMuNTgyMDMxLTgtOHYtMTM2YzAtMjIuMDg5ODQ0LTE3LjkxMDE1N
+              i00MC00MC00MHMtNDAgMTcuOTEwMTU2LTQwIDQwdjEzNmMwIDQuNDE3OTY5LTMuNTgyMDMxIDgtOCA4aC0xMzZjLTIyLjA4OTg0NCAwLTQwIDE3LjkxMDE1Ni00MCA0MHMxNy45M
+              TAxNTYgNDAgNDAgNDBoMTM2YzQuNDE3OTY5IDAgOCAzLjU4MjAzMSA4IDh2MTM2YzAgMjIuMDg5ODQ0IDE3LjkxMDE1NiA0MCA0MCA0MHM0MC0xNy45MTAxNTYgNDAtNDB2LTEzN
+              mMwLTQuNDE3OTY5IDMuNTgyMDMxLTggOC04aDEzNmMyMi4wODk4NDQgMCA0MC0xNy45MTAxNTYgNDAtNDBzLTE3LjkxMDE1Ni00MC00MC00MHptMCAwIiBmaWxsPSIjZmZmZmZmI
+              iBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PC9nPjwvc3ZnPg=="width="20px"/> -->
+            <img src="../imagenes/Add.png" width="30px">
+          </a>
+          <button class="btn btn-warning" id="edit" onclick="loadRideForm(false)">
+            <!-- URL DE EDITAR RIDE-->
+            <!-- <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6L
+              y93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld
+              0JveD0iMCAwIDUxMiA1MTEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPjxwYXRoIHhtb
+              G5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0ibTQwNS4zMzIwMzEgMjU2LjQ4NDM3NWMtMTEuNzk2ODc1IDAtMjEuMzMyMDMxIDkuNTU4NTk0LTIxLjMzMjAzMSAyM
+              S4zMzIwMzF2MTcwLjY2Nzk2OWMwIDExLjc1MzkwNi05LjU1ODU5NCAyMS4zMzIwMzEtMjEuMzMyMDMxIDIxLjMzMjAzMWgtMjk4LjY2Nzk2OWMtMTEuNzc3MzQ0IDAtMjEuMzMyM
+              DMxLTkuNTc4MTI1LTIxLjMzMjAzMS0yMS4zMzIwMzF2LTI5OC42Njc5NjljMC0xMS43NTM5MDYgOS41NTQ2ODctMjEuMzMyMDMxIDIxLjMzMjAzMS0yMS4zMzIwMzFoMTcwLjY2N
+              zk2OWMxMS43OTY4NzUgMCAyMS4zMzIwMzEtOS41NTg1OTQgMjEuMzMyMDMxLTIxLjMzMjAzMSAwLTExLjc3NzM0NC05LjUzNTE1Ni0yMS4zMzU5MzgtMjEuMzMyMDMxLTIxLjMzN
+              TkzOGgtMTcwLjY2Nzk2OWMtMzUuMjg1MTU2IDAtNjQgMjguNzE0ODQ0LTY0IDY0djI5OC42Njc5NjljMCAzNS4yODUxNTYgMjguNzE0ODQ0IDY0IDY0IDY0aDI5OC42Njc5NjljM
+              zUuMjg1MTU2IDAgNjQtMjguNzE0ODQ0IDY0LTY0di0xNzAuNjY3OTY5YzAtMTEuNzk2ODc1LTkuNTM5MDYzLTIxLjMzMjAzMS0yMS4zMzU5MzgtMjEuMzMyMDMxem0wIDAiIGZpb
+              Gw9IiNmZmZmZmYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiPjwvcGF0aD48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im0yMDAuM
+              DE5NTMxIDIzNy4wNTA3ODFjLTEuNDkyMTg3IDEuNDkyMTg4LTIuNDk2MDkzIDMuMzkwNjI1LTIuOTIxODc1IDUuNDM3NWwtMTUuMDgyMDMxIDc1LjQzNzVjLS43MDMxMjUgMy40O
+              TYwOTQuNDA2MjUgNy4xMDE1NjMgMi45MjE4NzUgOS42NDA2MjUgMi4wMjczNDQgMi4wMjczNDQgNC43NTc4MTIgMy4xMTMyODIgNy41NTQ2ODggMy4xMTMyODIuNjc5Njg3IDAgM
+              S4zODY3MTgtLjA2MjUgMi4wODk4NDMtLjIxMDkzOGw3NS40MTQwNjMtMTUuMDgyMDMxYzIuMDg5ODQ0LS40Mjk2ODggMy45ODgyODEtMS40Mjk2ODggNS40NjA5MzctMi45MjU3O
+              DFsMTY4Ljc4OTA2My0xNjguNzg5MDYzLTc1LjQxNDA2My03NS40MTAxNTZ6bTAgMCIgZmlsbD0iI2ZmZmZmZiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgc3R5bGU9IiI+PC9wY
+              XRoPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0ibTQ5Ni4zODI4MTIgMTYuMTAxNTYyYy0yMC43OTY4NzQtMjAuODAwNzgxLTU0LjYzMjgxMi0yM
+              C44MDA3ODEtNzUuNDE0MDYyIDBsLTI5LjUyMzQzOCAyOS41MjM0MzggNzUuNDE0MDYzIDc1LjQxNDA2MiAyOS41MjM0MzctMjkuNTI3MzQzYzEwLjA3MDMxMy0xMC4wNDY4NzUgM
+              TUuNjE3MTg4LTIzLjQ0NTMxMyAxNS42MTcxODgtMzcuNjk1MzEzcy01LjU0Njg3NS0yNy42NDg0MzctMTUuNjE3MTg4LTM3LjcxNDg0NHptMCAwIiBmaWxsPSIjZmZmZmZmIiBkY
+              XRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIj48L3BhdGg+PC9nPjwvc3ZnPg==" width="20px" -->
+            <img src="../imagenes/Edit.png" width="40px">
+
+          </button>
+          <button type="button" class="btn btn-info" id="view" onclick="loadRideForm(true)">
+            <!-- URL DE VER RIDE-->
+            <!-- <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6L
+              y93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld
+              0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8ZyB4bWxuc
+              z0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgoJPGc+CgkJPHBhdGggZD0iTTUwOC4xNzcsMjQ1Ljk5NUM1MDMuNjA3LDI0MC44OTcsMzkzLjY4MiwxMjEsMjU2LDEyMVM4L
+              jM5NCwyNDAuODk3LDMuODIzLDI0NS45OTVjLTUuMDk4LDUuNjk4LTUuMDk4LDE0LjMxMiwwLDIwLjAxICAgIEM4LjM5NCwyNzEuMTAzLDExOC4zMiwzOTEsMjU2LDM5MXMyNDcuN
+              jA2LTExOS44OTcsMjUyLjE3Ny0xMjQuOTk1QzUxMy4yNzQsMjYwLjMwNyw1MTMuMjc0LDI1MS42OTMsNTA4LjE3NywyNDUuOTk1eiBNMjU2LDM2MSAgICBjLTU3Ljg5MSwwLTEwN
+              S00Ny4xMDktMTA1LTEwNXM0Ny4xMDktMTA1LDEwNS0xMDVzMTA1LDQ3LjEwOSwxMDUsMTA1UzMxMy44OTEsMzYxLDI1NiwzNjF6IiBmaWxsPSIjZmZmZmZmIiBkYXRhLW9yaWdpb
+              mFsPSIjMDAwMDAwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+Cgk8L2c+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KCTxnPgoJCTxwYXRoI
+              GQ9Ik0yNzEsMjI2YzAtMTUuMDksNy40OTEtMjguMzY1LDE4Ljg4Ny0zNi41M0MyNzkuNjYxLDE4NC4yMzUsMjY4LjI1NSwxODEsMjU2LDE4MWMtNDEuMzUzLDAtNzUsMzMuNjQ3L
+              Tc1LDc1ICAgIGMwLDQxLjM1MywzMy42NDcsNzUsNzUsNzVjMzcuMDI0LDAsNjcuNjY4LTI3LjAzNCw3My43MjItNjIuMzU4QzI5OS41MTYsMjc4LjM2NywyNzEsMjU1LjUyMiwyN
+              zEsMjI2eiIgZmlsbD0iI2ZmZmZmZiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPgoJPC9nPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd
+              3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwM
+              C9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8Z
+              yB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6L
+              y93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yM
+              DAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+C
+              jxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0c
+              DovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjwvZz48L3N2Zz4=" width="20px"/> -->
+            <img src="../imagenes/view.png" width="40px">
+
+          </button>
+          <button type="button" class="btn btn-danger" id="delete">
+            <!--  URL DE ELIMINAR RIDE-->
+            <!-- <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6L
+              y93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld
+              0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnIHRyYW5zZm9yb
+              T0ibWF0cml4KDEsMCwwLDEsNjAsMCkiPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0ibTE1Ni4zNzEwOTQgMzAuOTA2MjVoODUuNTcwMzEydjE0L
+              jM5ODQzOGgzMC45MDIzNDR2LTE2LjQxNDA2M2MuMDAzOTA2LTE1LjkyOTY4Ny0xMi45NDkyMTktMjguODkwNjI1LTI4Ljg3MTA5NC0yOC44OTA2MjVoLTg5LjYzMjgxMmMtMTUuO
+              TIxODc1IDAtMjguODc1IDEyLjk2MDkzOC0yOC44NzUgMjguODkwNjI1djE2LjQxNDA2M2gzMC45MDYyNXptMCAwIiBmaWxsPSIjZmZmZmZmIiBkYXRhLW9yaWdpbmFsPSIjMDAwM
+              DAwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJtMzQ0LjIxMDkzOCAxNjcuNzVoLTI5MC4xMDkzN
+              zZjLTcuOTQ5MjE4IDAtMTQuMjA3MDMxIDYuNzgxMjUtMTMuNTY2NDA2IDE0LjcwNzAzMWwyNC4yNTM5MDYgMjk5LjkwNjI1YzEuMzUxNTYzIDE2Ljc0MjE4OCAxNS4zMTY0MDcgM
+              jkuNjM2NzE5IDMyLjA5Mzc1IDI5LjYzNjcxOWgyMDQuNTQyOTY5YzE2Ljc3NzM0NCAwIDMwLjc0MjE4OC0xMi44OTQ1MzEgMzIuMDkzNzUtMjkuNjQwNjI1bDI0LjI1MzkwNy0yO
+              TkuOTAyMzQ0Yy42NDQ1MzEtNy45MjU3ODEtNS42MTMyODItMTQuNzA3MDMxLTEzLjU2MjUtMTQuNzA3MDMxem0tMjE5Ljg2MzI4MiAzMTIuMjYxNzE5Yy0uMzI0MjE4LjAxOTUzM
+              S0uNjQ4NDM3LjAzMTI1LS45Njg3NS4wMzEyNS04LjEwMTU2MiAwLTE0LjkwMjM0NC02LjMwODU5NC0xNS40MDYyNS0xNC41MDM5MDdsLTE1LjE5OTIxOC0yNDYuMjA3MDMxYy0uN
+              TIzNDM4LTguNTE5NTMxIDUuOTU3MDMxLTE1Ljg1MTU2MiAxNC40NzI2NTYtMTYuMzc1IDguNDg4MjgxLS41MTU2MjUgMTUuODUxNTYyIDUuOTQ5MjE5IDE2LjM3NSAxNC40NzI2N
+              TdsMTUuMTk1MzEyIDI0Ni4yMDcwMzFjLjUyNzM0NCA4LjUxOTUzMS01Ljk1MzEyNSAxNS44NDc2NTYtMTQuNDY4NzUgMTYuMzc1em05MC40MzM1OTQtMTUuNDIxODc1YzAgOC41M
+              zEyNS02LjkxNzk2OSAxNS40NDkyMTgtMTUuNDUzMTI1IDE1LjQ0OTIxOHMtMTUuNDUzMTI1LTYuOTE3OTY4LTE1LjQ1MzEyNS0xNS40NDkyMTh2LTI0Ni4yMTA5MzhjMC04LjUzN
+              TE1NiA2LjkxNzk2OS0xNS40NTMxMjUgMTUuNDUzMTI1LTE1LjQ1MzEyNSA4LjUzMTI1IDAgMTUuNDUzMTI1IDYuOTE3OTY5IDE1LjQ1MzEyNSAxNS40NTMxMjV6bTkwLjc1NzgxM
+              i0yNDUuMzAwNzgyLTE0LjUxMTcxOCAyNDYuMjA3MDMyYy0uNDgwNDY5IDguMjEwOTM3LTcuMjkyOTY5IDE0LjU0Mjk2OC0xNS40MTAxNTYgMTQuNTQyOTY4LS4zMDQ2ODggMC0uN
+              jEzMjgyLS4wMDc4MTItLjkyMTg3Ni0uMDIzNDM3LTguNTE5NTMxLS41MDM5MDYtMTUuMDE5NTMxLTcuODE2NDA2LTE0LjUxNTYyNC0xNi4zMzU5MzdsMTQuNTA3ODEyLTI0Ni4yM
+              TA5MzhjLjUtOC41MTk1MzEgNy43ODkwNjItMTUuMDE5NTMxIDE2LjMzMjAzMS0xNC41MTU2MjUgOC41MTk1MzEuNSAxNS4wMTk1MzEgNy44MTY0MDYgMTQuNTE5NTMxIDE2LjMzN
+              TkzN3ptMCAwIiBmaWxsPSIjZmZmZmZmIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub
+              3JnLzIwMDAvc3ZnIiBkPSJtMzk3LjY0ODQzOCAxMjAuMDYyNS0xMC4xNDg0MzgtMzAuNDIxODc1Yy0yLjY3NTc4MS04LjAxOTUzMS0xMC4xODM1OTQtMTMuNDI5Njg3LTE4LjY0M
+              DYyNS0xMy40Mjk2ODdoLTMzOS40MTAxNTZjLTguNDUzMTI1IDAtMTUuOTY0ODQ0IDUuNDEwMTU2LTE4LjYzNjcxOSAxMy40Mjk2ODdsLTEwLjE0ODQzOCAzMC40MjE4NzVjLTEuO
+              TU3MDMxIDUuODY3MTg4LjU4OTg0NCAxMS44NTE1NjIgNS4zNDM3NSAxNC44MzU5MzggMS45Mzc1IDEuMjE0ODQzIDQuMjMwNDY5IDEuOTQ1MzEyIDYuNzUgMS45NDUzMTJoMzcyL
+              jc5Njg3NmMyLjUxOTUzMSAwIDQuODE2NDA2LS43MzA0NjkgNi43NS0xLjk0OTIxOSA0Ljc1MzkwNi0yLjk4NDM3NSA3LjMwMDc4MS04Ljk2ODc1IDUuMzQzNzUtMTQuODMyMDMxe
+              m0wIDAiIGZpbGw9IiNmZmZmZmYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48L2c+PC9zdmc+" width="20px"/> -->
+            <img src="../imagenes/delete.png" width="30px">
+          </button>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <div class="container mt-5">
+    <form class="row mb-3 justify-content-center"> <!--forns de ver ride-->
+      <h3 class="mb-3">Ride details</h3>
+      <br />
+      <div class="col-auto">
+        <div class="input-group mb-3">
+          <span class="input-group-text">Ride Name</span>
+          <input type="text" aria-label="First name" class="form-control" id="rideName" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Start From</span>
+          <input type="text" aria-label="First name" class="form-control" id="start" />
+          <span class="input-group-text">End</span>
+          <input type="text" aria-label="Last name" class="form-control" id="end" />
+        </div>
+        <div class="input-group">
+          <span class="input-group-text">Description</span>
+          <textarea class="form-control" id="description"></textarea>
+        </div>
+        <hr />
+        <!-- Div para selecionar la hora de salida y hora aprox de llegada-->
+        <h3>When</h3>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Departure</span>
+          <input type="time" aria-label="First name" class="form-control" id="departure" />
+          <span class="input-group-text">Estimated Arrival</span>
+          <input type="time" aria-label="Last name" class="form-control" id="arrival" />
+        </div>
+        <!-- Div para Selecionador de dias-->
+        <label for="" class="mb-3">Select Days</label>
+        <div class="input-group mb-3">
+          <div class="input-group-text">
+            <input class="form-check-input mt-0" type="checkbox" id="monday" name="day" value="Monday" />
+          </div>
+          <input type="text" class="form-control" value="Monday" readonly />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-text">
+            <input class="form-check-input mt-0" type="checkbox" id="tuesday" name="day" value="Tuesday" />
+          </div>
+          <input type="text" class="form-control" value="Tuesday" readonly />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-text">
+            <input class="form-check-input mt-0" type="checkbox" id="wednesday" name="day" value="Wednesday" />
+          </div>
+          <input type="text" class="form-control" value="Wednesday" readonly />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-text">
+            <input class="form-check-input mt-0" type="checkbox" id="thursday" name="day" value="Thursday" />
+          </div>
+          <input type="text" class="form-control" value="Thursday" readonly />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-text">
+            <input class="form-check-input mt-0" type="checkbox" id="friday" name="day" value="Friday" />
+          </div>
+          <input type="text" class="form-control" value="Friday" readonly />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-text">
+            <input class="form-check-input mt-0" type="checkbox" id="saturday" name="day" value="Saturday" />
+          </div>
+          <input type="text" class="form-control" value="Saturday" readonly />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-text">
+            <input class="form-check-input mt-0" type="checkbox" id="sunday" name="day" value="Sunday" />
+          </div>
+          <input type="text" class="form-control" value="Sunday" readonly />
+        </div>
+        <button type="reset" class="btn btn-danger" id="reset">
+          Cancel
+        </button>
+        <button type="button" id="editRide" class="btn btn-success"
+          onclick="getCheckboxValues(this.form); return false;">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <footer class="mt-5 navbar-light bg-light">
+    <h2 class="p-3">TicoRiders.com</h2>
+    <p class="p-3">
+      Copyright © TicoRiders 2022 All rights reserved.
+    </p>
+  </footer>
+  <script src="../JS/dashboard.js"></script>
+</body>
+
+</html>
