@@ -1,0 +1,18 @@
+
+.logoContent {
+  width: 70%;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+.logo {
+  width: auto;
+  height: 80px;
+  margin-top: 10px;
+  margin-left: 10px;
+  float: left;
+}
+.map{
+    height: 400px;
+    width: 100%;
+  }
