@@ -129,7 +129,7 @@ function loadRideForm(isReadOnly) {
       }
     }
   } else {
-    alert("Seleccione un viaje para continuar"); // Select a ride to continue
+    alert("Seleccione un viaje para continuar"); // Select a ride to continue.
   }
 }
 

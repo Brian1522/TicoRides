@@ -30,5 +30,5 @@ function editUserChanges() {
     users[i].aboutMe = aboutMe;
   }}
   localStorage.setItem("localUserList", JSON.stringify(users));
-  alert("Se han guardado los cambios"); //Your changes have been saved
+  alert("Se han guardado los cambios"); //Your changes have been saved.
 }

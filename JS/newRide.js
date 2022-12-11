@@ -67,7 +67,7 @@ function localStorageRidesList(rides) {
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     mapTypeControl: false,
-    center: { lat: 9.748917, lng: -83.753428}, //coordenadas
+    center: { lat: 10.34375, lng: -84.42886}, //coordenadas ecocampus
     zoom: 13,
   });
   new AutocompleteDirectionsHandler(map);

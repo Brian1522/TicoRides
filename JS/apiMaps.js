@@ -1,7 +1,7 @@
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
       mapTypeControl: false,
-      center: { lat: 9.748917, lng: -83.753428},//la actual es ciudad Quesada// prueba: lat: -33.8688, lng: 151.2195 sidni
+      center: {lat: 10.34375, lng: -84.42886},// ecocampus// Ciudad Quesada:lat: 10.32381, lng: -84.42714
       zoom: 13, //coordenadas
     });
     new AutocompleteDirectionsHandler(map);

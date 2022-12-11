@@ -27,7 +27,7 @@ function saveUser() {
       document.querySelector("#password").value = "";
       document.querySelector("#confirmPassword").value = "";
     } else {
-      alert("¡Las contraseñas no coinciden!"); //Passwords do not match
+      alert("¡Las contraseñas no coinciden!"); //Passwords do not match.
     }
   } else {
     alert("Debes llenar todos los espacios"); //You must fill all the spaces

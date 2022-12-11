@@ -15,7 +15,7 @@ function validateLogin() {
         clearInput();
         
     }else{
-        alert('Datos Incorrectos');//Incorrect data
+        alert('Datos Incorrectos');//Incorrect data.
     }
   }
   
